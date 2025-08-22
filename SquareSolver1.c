@@ -16,12 +16,24 @@ enum variants_solutions {
 const double EPS = 1e-10;
 
 // add github
+
+
+// ---------------------------------
+//! @brief —равнени€ числа типа double с нулем
+//!
+//!@param[in] a  a - число типа double, которое мы сравниваем
+//!
+//!@return –авно ли число нулю
+// ---------------------------------
+
 char compare_doubles(double a) {
     return fabs(a) < EPS;
 }
 
 int Linear_equation(double a, double b,
                         double *x1){
+    assert(x1);
+
     if (compare_doubles(a)) {
         if (compare_doubles(b)) {
             return INF_SOL;
@@ -68,6 +80,7 @@ int Square_equation(double a, double b, double c,
 
 int equation(double &a, double &b, double &c,
                         double *x1, double *x2) {
+
     if (compare_doubles(a)){
         return Linear_equation(b, c, x1);
     }
@@ -110,10 +123,12 @@ int main() {
     int count_roots = 0; /*# оличество корней квадратного уравнени€*/
     double x1 = NAN, x2 = NAN; /*# орни квадратного уравнени€ */
 
+
     printf("Hi, that programm in square solver\n");
     printf("Put in programm coefficents: \n");
 
-
+    assert(x1 != NAN);
+    assert(x2 != NAN);
     input(a, b, c);
 
     count_roots = Square_equation(a, b, c, &x1, &x2);
